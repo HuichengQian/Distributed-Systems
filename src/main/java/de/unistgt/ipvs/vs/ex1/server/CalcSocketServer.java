@@ -14,7 +14,7 @@ public class CalcSocketServer extends Thread {
 
 	public CalcSocketServer(int port) {
 		this.srvSocket = null;
-		
+		//test
 		this.port = port;
 	}
 	
