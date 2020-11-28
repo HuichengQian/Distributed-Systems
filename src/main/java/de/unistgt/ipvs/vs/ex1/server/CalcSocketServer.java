@@ -5,6 +5,8 @@ import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.net.ServerSocket;
 import java.net.Socket;
+import java.util.HashMap;
+import java.util.Map;
 
 /**
  * Extend the run-method of this class as necessary to complete the assignment.
@@ -13,6 +15,7 @@ import java.net.Socket;
 public class CalcSocketServer extends Thread {
 	private ServerSocket srvSocket;
 	private int port;
+	private Map<Socket, CalculationSession> map = new HashMap<>();
 
 	public CalcSocketServer(int port) {
 		this.srvSocket = null;
@@ -42,7 +45,6 @@ public class CalcSocketServer extends Thread {
 			srvSocket = new ServerSocket(port);
 			while (true) {
 				new Thread(new CalculationSession(srvSocket.accept())).start();
-				
 				
 			}
 		} catch (IOException e) {

@@ -28,14 +28,21 @@ public class TestCalc {
 
         CalcSocketClient cCli = new CalcSocketClient();
         cCli.connectTo(srvIP, srvPort);
-
+        
+        CalcSocketClient sCli = new CalcSocketClient();
+        sCli.connectTo(srvIP, srvPort);
+        
         //Test 
-        String req1 = "ADD 1 2 3 SUB 3 2 1";
+        String req1 = "ADD 1 2 3 SUB 3 2 0";
         cCli.calculate("<" + (req1.length() + 5) + ":" + req1 + ">");
         cCli.calculate("<08:rEs>");
 
-        assertEquals(0,cCli.getCalcRes());
+        
+        sCli.calculate("<08:rEs>");
+        
+        assertEquals(1,cCli.getCalcRes());
         assertEquals(11,cCli.getRcvdOKs());
+        assertEquals(1,sCli.getCalcRes());
 
         cCli.disconnect();
     }

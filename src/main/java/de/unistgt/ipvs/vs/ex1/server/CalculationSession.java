@@ -24,7 +24,7 @@ public class CalculationSession implements Runnable {
 	}
 	
 	public void run() {
-		System.out.println("[SRV]client connected");
+		System.out.println("[SRV]client connected"+socket.toString());
 		//Open an input stream and output steam to the socket
 		try {
 			dos = new DataOutputStream(socket.getOutputStream());

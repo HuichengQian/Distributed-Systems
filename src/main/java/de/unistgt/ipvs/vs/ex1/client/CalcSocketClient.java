@@ -14,6 +14,7 @@ import java.net.UnknownHostException;
  */
 public class CalcSocketClient {
 	private Socket cliSocket;
+	private Socket sliSocket;
 	private int    rcvdOKs;		// --> Number of valid message contents
 	private int    rcvdErs;		// --> Number of invalid message contents
 	private int    calcRes;		// --> Calculation result (cf.  'RES')
